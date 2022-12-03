@@ -23,13 +23,13 @@ void RobotLine::radionica() {
   }
 
    else if (line(0) && line(8) and raskrizje == 3) {
-    go(60, 60);
-    delayMs(50);
+    go(100, 100);
+    delayMs(200);
     raskrizje++;
   }
 
  else if (line(0) && line(8) and raskrizje == 4) {
-    go(60, -60);
+    go(-60, 60);
     delayMs(500);
     raskrizje++;
   }
@@ -54,7 +54,7 @@ void RobotLine::radionica() {
   else if (line(4))
     go(70, 70);
   else
-    go(70, 70);
+    go(100, 100);
     
   sprintf(simbol, "%d", raskrizje);
   display(simbol);
