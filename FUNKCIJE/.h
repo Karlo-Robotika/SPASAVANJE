@@ -142,6 +142,8 @@ public:
   void wallsFollowLeft();
 
   void Frontwalls90();
+  void nigerija();
+  void deez();
 	/** Color sensor's blue
 	@param deviceNumber - Device's ordinal number. Each call of function add() assigns a increasing number to the device, starting with 0.
 	@return - intensity of blue
