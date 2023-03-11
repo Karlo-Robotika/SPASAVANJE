@@ -1,0 +1,4 @@
+V+if((shrek==1) and (dua==1) and not lineAny() and frontLeft()<120 and frontRight()<120){
+  stop();
+  end();
+}
