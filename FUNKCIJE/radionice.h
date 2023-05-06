@@ -4,10 +4,10 @@
 
 void RobotLine::radionica()
 {
+  static int ball=0;
+/*
 static int shrek=0;
 static int dua=0;
-nigerija();
-
 
 
 if(front(3)<120 and front(3)>50 and (pitch()>-2 and pitch()<2) and shrek == 0 && dua==0) {
@@ -54,5 +54,42 @@ else if (line(0) && line(8) && dua==0) {
     delayMs(500);
 
   }
+else{
+  nigerija();
+  
+}*/
+
+wallsFollowRight();
+ if (front() < 120) {
+    go(-90, 90);
+    delayMs(500);
+
+}
+
+
+  if (frontLeft() < 120) {
+    go(90, 90);
+    delayMs(250);
+    go(-90, 90);
+    delayMs(500);
+    go(60, 60);
+    delayMs(1000);
+    armClose();
+    go(90, -90);
+    delayMs(500);
+      go(90, -90);
+    delayMs(500);
+      go(60, 60);
+    delayMs(1000);
+     go(-90, 90);
+    delayMs(500);
+    ball++;
+
+  }
+if (lineAny() and ball==1){
+  armOpen();
+stop();
+end();
+}
 
 }
