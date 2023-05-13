@@ -60,14 +60,14 @@ else{
 }*/
 
 wallsFollowRight();
- if (front() < 120) {
+
+ if (front() < 130) {
     go(-90, 90);
     delayMs(500);
 
 }
 
-
-  if (frontLeft() < 120) {
+  if (frontLeft() < 160 and ball==0) {
     go(90, 90);
     delayMs(250);
     go(-90, 90);
@@ -83,13 +83,12 @@ wallsFollowRight();
     delayMs(1000);
      go(-90, 90);
     delayMs(500);
-    ball++;
+    ball=1;
 
   }
 if (lineAny() and ball==1){
-  armOpen();
-stop();
-end();
+  armOpen();a
+  ball=0;
 }
 
 }
