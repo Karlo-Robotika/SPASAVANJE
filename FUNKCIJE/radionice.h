@@ -1,39 +1,53 @@
 #pragma once
- #include "helper.h"
+#include "helper.h"
 
 
 void RobotLine::radionica()
 {
-  static int ball=0;
-/*
-static int shrek=0;
-static int dua=0;
+  static int ras = 0;
+  static uint32_t ms = 0;
+  if (setup()) {
+    ms = millis();
+  }
 
-
-if(front(3)<120 and front(3)>50 and (pitch()>-2 and pitch()<2) and shrek == 0 && dua==0) {
+  if (line(0) && line(8)) {
+    stop();
+    delayMs(500);
     go(-90, 90);
     delayMs(500);
-    
-    
- while (not lineAny()) {
-    go(40, 10);
-
-    noLoopWithoutThis();
+    ras = 1;
   }
-  go(50,50);
-  delayMs(200);
- go(-60, 60);
- delayMs(500);
- shrek++;
-}
 
-if((shrek==1) and (dua==1) and not lineAny() and frontLeft()<330 and frontRight()<330 and pitch()>-2 and pitch()<2){
-  stop();
-  end();
-  
-}
+  if (ras == 1) {
+    go (60, 60);
+  }
+  else if (millis() - ms > 199) {
+    stop();
+    delayMs(500);
+  }
 
-if (line(0) && line(8) &&   pitch() < -10 and not shrek == 0) {
+  if (line(8))
+    go(-90, 90);
+  else if (line(0))
+    go(90, -90);
+  else if (line(7))
+    go(0, 100);
+  else if (line(1))
+    go(100, 0);
+  else if (line(6))
+    go(30, 80);
+  else if (line(2))
+    go(80, 30);
+  else if (line(5))
+    go(40, 70);
+  else if (line(3))
+    go(70, 40);
+  else if (line(4))
+    go(70, 70);
+  else
+    go(70, 70);
+
+}
     go(90, 90);
     delayMs(200);
     dua=1;
