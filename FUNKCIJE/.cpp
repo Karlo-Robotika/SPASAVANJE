@@ -114,7 +114,7 @@ void RobotLine::armCarry() {
 }
 
 void RobotLine::armOpen() {
-  servo(130, 0);      // Range from 130 - 160
+  servo(120, 0);      // Range from 130 - 160
   servo(80, 1);       // Range from 0 - 90
   servo(10, 2);       // Range from 90 - 0}
 }
@@ -132,7 +132,7 @@ void RobotLine::armCatchReady() {
 /**
 */
 void RobotLine::armClose() {
-  servo(140, 0);
+  servo(130, 0);
   servo(0, 1);
   servo(90, 2);
 }
@@ -844,8 +844,14 @@ void RobotLine::lineFollow() {
     go(70, 40);
   else if (line(4))
     go(70, 70);
-  else if (millis() - ms > 100)
+  else if (millis() - ms > 100) {
     stop();
+    delayMs(75);
+    go(90, 90);
+    delayMs(240);
+    go(-90, -90);
+    delayMs(950);
+  }
   else
     go(70, 70);
   // static uint32_t lastLineFoundMs = millis(); // Used to measure gap in line.
@@ -1388,7 +1394,7 @@ bool RobotLine::wallRight() {
 }
 
 void RobotLine::wallsFollowRight() {
-  if(setup()){
+  if (setup()) {
     armOpen();
   }
   if (rightFront() > 120)
@@ -1400,7 +1406,7 @@ void RobotLine::wallsFollowRight() {
 
 
 void RobotLine::wallsFollowLeft() {
-  if(setup()){
+  if (setup()) {
     armOpen();
   }
   if (leftFront() > 120)
@@ -1411,31 +1417,31 @@ void RobotLine::wallsFollowLeft() {
 }
 
 void RobotLine::Frontwalls90() {
-  static int k00l=0;
-  
-  if (leftFront() < rightFront()){
-    wallsFollowLeft();
-    k00l=1;
-    }
+  static int k00l = 0;
 
-  if (rightFront() < leftFront()){
+  if (leftFront() < rightFront()) {
+    wallsFollowLeft();
+    k00l = 1;
+  }
+
+  if (rightFront() < leftFront()) {
     wallsFollowRight();
-    k00l=2;
+    k00l = 2;
   }
 
 
-  if (front() < 120 && k00l==2) {
+  if (front() < 120 && k00l == 2) {
     go(-90, 90);
     delayMs(500);
-    k00l=0;
+    k00l = 0;
 
   }
 
-  
-  if (front() < 120 && k00l==1) {
+
+  if (front() < 120 && k00l == 1) {
     go(90, -90);
     delayMs(500);
-    k00l=0;
+    k00l = 0;
 
   }
 
@@ -1443,54 +1449,44 @@ void RobotLine::Frontwalls90() {
 }
 
 
- void RobotLine::nigerija() {
-    
+void RobotLine::nigerija() {
+
   if (line(8))
-     go(-90, 90);
-   else if (line(0))
+    go(-90, 90);
+  else if (line(0))
     go(90, -90);
-   else if (line(7))
+  else if (line(7))
     go(0, 100);
-   else if (line(1))
+  else if (line(1))
     go(100, 0);
-   else if (line(6))
+  else if (line(6))
     go(30, 80);
-   else if (line(2))
+  else if (line(2))
     go(80, 30);
-   else if (line(5))
+  else if (line(5))
     go(40, 70);
-   else if (line(3))
-    go(70, 40);  
-   else if (line(4))
+  else if (line(3))
+    go(70, 40);
+  else if (line(4))
     go(70, 70);
-   else
+  else
     go(70, 70);
-  }
+}
 
 void RobotLine::deez() {
- wallsFollowLeft();
- if (frontRight() < 120) {
-  go(60, 60);
-  delayMs(500);
-  go(90, -90);
-  delayMs(500);
-  go(60, 60);
-  delayMs(1000);
-  armClose();
-  delayMs(500);
-  stop();
-  end();
+  wallsFollowLeft();
+  if (frontRight() < 120) {
+    go(60, 60);
+    delayMs(500);
+    go(90, -90);
+    delayMs(500);
+    go(60, 60);
+    delayMs(1000);
+    armClose();
+    delayMs(500);
+    stop();
+    end();
 
   }
 
-  }
-
-
-
-
-
-
-
-
-
-
+}
